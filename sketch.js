@@ -3,15 +3,20 @@ var selectValues = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
 var ch = 0;
 var base = 0.200; //200 ml - 1 glass
 
-
+var animevents = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
 $(document).ready(function(){
 	$('#slider').slider({
 		orientation: "horizontal",
       	range: "min",
-      	max: 20,
-      	value: 0,
+      	max:  20,
+      	value: 1,
       	slide: function( event, ui ) {
-	        slide(ui.value);
+			if (ui.value>0){
+				slide(ui.value);
+			}else{
+				$('#slider').val(1);
+			}
+	        
 	      }
 	});
 	$.each(selectValues, function(key, value) {   
@@ -20,6 +25,27 @@ $(document).ready(function(){
 	         .attr("value",selectValues[key])
 	         .text(value + "CH")); 
 	});
+	$('#know-more-anchor').click(function(){
+		
+		slide(1);
+		$('#main-claim').addClass('animated bounceOutLeft').one(animevents, 
+			function(){
+				$('#preslave').addClass('animated bounceOutRight');
+				$('#main-claim').removeClass('bounceOutLeft');
+				$('#main-claim').text("L'omeopatia e' ciarlataneria.");
+				$('#main-claim').addClass('bounceInLeft');
+				$('#slave').show();
+				$('#slave').addClass('animated fadeIn').one(animevents, function(){
+					$('#preslave').removeClass('bounceOutRight');
+					$('#preslave').text("Le diluzioni standard in omeopatia vanno da 1 a 100 CH. Sai cosa significa?");
+					$('#preslave').addClass('bounceInRight');
+				});
+		});	
+	});
+	setTimeout(function(){
+		$('#preslave').addClass('animated rubberBand');
+		$('#preslave').show();
+	},1500);
 	
 });
 
@@ -62,7 +88,7 @@ var references=[
 	{l : earth, obj:['volte il volume della Terra']},
 	{l : 1322 * earth, obj:['volte il volume di Giove']},
 	{l : sun, obj:['volte il volume del Sole']},
-	{l : 1700 * sun, obj:['volte il volume di UY Scuti']}	
+	{l : 1700 * sun, obj:['volte il volume di <a target="" href="https://it.wikipedia.org/wiki/UY_Scuti">UY Scuti</a>']}	
 ];
 
 var numbers = [

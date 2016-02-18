@@ -1,5 +1,5 @@
-
-<!DOCTYPE html><html>
+<!DOCTYPE html>
+<html>
 <head>
 	<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 	
@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<!-- Optional theme -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-	<link href="jquery-ui.min.css" rel="stylesheet">
+	<link href="jquery-ui.min.css" rel="stylesheet"><link href="animate.css" rel="stylesheet">
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
@@ -20,6 +20,22 @@
 
 	<style type="text/css"> 
 		.ui-slider-range { background: #729fcf; }
+		
+		#preslave{
+			margin-bottom:20px;
+			text-align: center;
+			min-height:100px;
+		}
+		#slave{
+			display:none;			
+		}
+
+		.wrapper{
+			min-height: 100%;
+			height: auto !important;
+			height: 100%;
+			margin: 0 auto -4em;
+		}
 		.formula{
 			width: 100%;
 			margin: 30px;
@@ -34,6 +50,10 @@
 			margin-right: 3px;
 			text-align: center;
 		}
+		.footer, .push {
+			height: 4em;
+		}
+		
 		.fa-1 { font-size: 1em; }
 		.fa-2 { font-size: 2em; }
 		.fa-3 { font-size: 4em; }
@@ -43,36 +63,40 @@
 	</style>
 
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-	<meta charset="UTF-8">
-	<meta name="viewport" content="initial-scale=1.0;maximum-scale=1.0;width=device-width;">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="description" content="Get the facts about how homeopathy works">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><meta name="description" content="Sai come funziona l'omeopatia?">
+	<meta name="keywords" content="HTML,CSS,XML,JavaScript">
+	<meta name="author" content="omeopatia, diluzioni, memoria dell'acqua, truffa, ciarlataneria, antiillumismo">
 	<!--[if lt IE 9]><script type="text/javascript" src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 <body>
-	<div id="Master">
-		<h1>Non funziona.</h1>
+	<div id="Master" class="wrapper">
+		<h1 id="main-claim" >Non funziona.</h1>
 
-
-		
-		<div id="result" class="container-fluid">
-			<div class="row slider">
-				 <div class="col-md-12" >
-				 	<div id="slider"></div>
-				 </div>				
+		<div id="preslave" style="display:none">		
+			<i class="fa fa-flask fa-3"> Cosa sai della diluizione centesimale? Clicca <a id='know-more-anchor'>qui</a> per scoprire come funziona.</i>
+		</div>
+		<div id="slave">		
+			<div id="result" class="container-fluid">
+				<div style="text-align:center;"><i class=""> Muovi lo slider per modificare la diluzione.</i></div>
+				<div class="row slider">
+					 <div class="col-md-12" >
+					 	<div id="slider"></div>
+					 </div>				
+				</div>
+				<div class="row formula">
+					 <div class="col-md-5"><i class="fa fa-flask fa-3"><span id="ch_indi"></span></i></div>
+					 <div class="col-md-1"><i class="fa-2">=</i></div>
+					 <div class="col-md-6 fa-3" id="soluzione">
+					 </div>
+				</div>	
+				<div class="row legend">
+					 <div class="col-md-12" >
+					 	<i class="fa fa-2 fa-exclamation-circle">
+					 		Equivale a sciogliere un bicchiere da cucina in un volume pari a <span id="tot-legend"></span>
+					 	</i>
+					 </div>				
+				</div>			
 			</div>
-			<div class="row formula">
-				 <div class="col-md-5"><i class="fa fa-flask fa-3"><span id="ch_indi"></span></i></div>
-				 <div class="col-md-1"><i class="fa-2">=</i></div>
-				 <div class="col-md-6 fa-3" id="soluzione">
-				 </div>
-			</div>	
-			<div class="row legend">
-				 <div class="col-md-12" >
-				 	<i class="fa fa-2 fa-exclamation-circle">
-				 		Equivale a sciogliere un bicchiere da cucina in un volume pari a <span id="tot-legend"></span>
-				 	</i>
-				 </div>				
-			</div>			
 		</div>
 
 		<footer>			
